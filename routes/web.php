@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BackController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/detail/{id}', [HomeController::class, 'show'])->whereNumber('id');
+
+Route::get('/admin', [BackController::class, 'show']);
+
