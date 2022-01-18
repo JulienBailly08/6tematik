@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class BackController extends Controller
 {
-    public function show(){
+    public function show()
+    {
         return view('backOffice');
     }
 }

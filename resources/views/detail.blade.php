@@ -2,9 +2,6 @@
 
 @section('content')
 
-    <h2>{{$datas}}</h2>
-    
+    <h2>{{ $datas }}</h2>
+
 @endsection
-
-
-
