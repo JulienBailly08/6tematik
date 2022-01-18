@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cars;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,10 +10,10 @@ class HomeController extends Controller
     public function index()
     {
 
-        $value = 'Hello World';
-
-        return view('home', [
-            'test' => $value
+        $cars = Cars::all();
+       
+        return view('home', [ 
+            'cars' => $cars
         ]);
     }
 
