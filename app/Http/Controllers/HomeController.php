@@ -11,23 +11,18 @@ class HomeController extends Controller
     {
 
         $cars = Cars::all();
-       
-        return view('home', [ 
+
+        return view('home', [
             'cars' => $cars
         ]);
     }
 
     public function show($id)
     {
-        $datas = [
-            1 => "puissance",
-            2 => "vistesse"
-        ];
-        $data = $datas[$id] ?? "no datas";
-
+        $car = Cars::findorfail($id);
 
         return view('detail', [
-            'datas' => $data
+            'car' => $car
         ]);
     }
 }

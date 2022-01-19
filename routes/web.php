@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/detail/{id}', [HomeController::class, 'show'])->whereNumber('id');
+Route::get('/detail/{id}', [HomeController::class, 'show'])->name('detail');
 
 Route::get('/admin', [BackController::class, 'show'])->name('back');
+
+Route::get('/admin/create', [BackController::class, 'create'])->name('create');

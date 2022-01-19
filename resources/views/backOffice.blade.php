@@ -2,6 +2,7 @@
 
 @section('content')
 
-    <h1>Et hop en route !</h1>
+    <h2>Gestion des véhicules</h2>
+    <a href="{{route ('create')}}">Création d'un nouveau véhicule</a>
 
 @endsection
