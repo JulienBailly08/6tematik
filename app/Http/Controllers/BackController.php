@@ -30,7 +30,13 @@ class BackController extends Controller
             'picture'=>$request->picture,
             'price'=>$request->price
         ]);
+        
+        return redirect()->route('back');
+    }
 
-
+    public function delete($id){
+        $car = Cars::find($id);
+        $car->delete();
+        return redirect()->route('back');
     }
 }

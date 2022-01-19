@@ -24,3 +24,5 @@ Route::get('/admin', [BackController::class, 'show'])->name('back');
 Route::get('/admin/create', [BackController::class, 'create'])->name('create');
 
 Route::post('/admin/create', [BackController::class, 'store'])->name('store');
+
+Route::get('/admin/delete/{id}', [BackController::class, 'delete'])->name('delete');
