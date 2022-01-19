@@ -11,7 +11,7 @@
                         <a class="text-decoration-none" href="{{ route('detail', ['id' => $car->id]) }}">
                             <div class="card shadow-sm">
                                 <img class="img-fluid" src="{{ Storage::url($car->picture) }}"
-                                    alt="une image de véhicule">
+                                    alt="une image de {{ $car->brand }} {{ $car->model }}">
                                 <div class="cardbody">
                                     <p class="ms-1 my-3 card-text text-dark">
                                         {{ $car->brand }}<br>

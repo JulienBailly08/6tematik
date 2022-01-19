@@ -31,6 +31,17 @@ class BackController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'brand' => 'required | max:255',
+            'model' => 'required | max:255',
+            'power' => 'required| numeric',
+            'year' => 'required | numeric',
+            'pack' => 'required |max:255',
+            'description' => 'required',
+            'picture' => 'required',
+            'price' => 'required | numeric'
+        ]);
+
         $name = Storage::disk('public')->put('img', $request->file('picture'));
 
         Cars::create([
@@ -58,20 +69,45 @@ class BackController extends Controller
         ]);
     }
 
-    public function update($id, Request $request)
+    public function update(Request $request)
     {
-        $car = Cars::find($id);
-        dd($car);
-        $car->update([
-            'brand' => $request->brand,
-            'model' => $request->model,
-            'power' => $request->power,
-            'year' => $request->year,
-            'pack' => $request->pack,
-            'description' => $request->description,
-            'picture' => $request->picture,
-            'price' => $request->price
+        $request->validate([
+            'brand' => 'required | max:255',
+            'model' => 'required | max:255',
+            'power' => 'required| numeric',
+            'year' => 'required | numeric',
+            'pack' => 'required |max:255',
+            'description' => 'required',
+            'price' => 'required | numeric'
         ]);
+
+        $car = Cars::find($request->id);
+        
+        if ($request->picture) {
+            $name = Storage::disk('public')->put('img', $request->file('picture'));    
+            $car->update([
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'power' => $request->power,
+                'year' => $request->year,
+                'pack' => $request->pack,
+                'description' => $request->description,
+                'picture' => $name,
+                'price' => $request->price
+            ]);
+
+        } else {
+             $car->update([
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'power' => $request->power,
+                'year' => $request->year,
+                'pack' => $request->pack,
+                'description' => $request->description,
+                'price' => $request->price
+            ]);
+        }
+
 
         return redirect()->route('back');
     }

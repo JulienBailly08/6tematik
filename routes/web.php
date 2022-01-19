@@ -29,9 +29,6 @@ Route::post('/admin/create', [BackController::class, 'store'])->name('store');
 
 Route::get('/admin/delete/{id}', [BackController::class, 'delete'])->name('delete');
 
-
-// A finaliser
-
 Route::get('/admin/edit/{id}', [BackController::class, 'edit'])->name('edit');
 
 Route::post('/admin/update', [BackController::class, 'update'])->name('update');

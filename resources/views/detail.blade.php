@@ -8,7 +8,7 @@
             <h3 class="text-center mb-5">{{ $car->model }}</h3>
             <div class="row border border-dark rounded">
                 <div class="col-6 my-4">
-                    <img class="img-fluid" src="{{ Storage::url($car->picture) }}" alt="une image de véhicule">
+                    <img class="img-fluid" src="{{ Storage::url($car->picture) }}" alt="une image de {{ $car->brand }} {{ $car->model }}">
                 </div>
                 <div class="col-6 my-4 d-flex flex-column justify-content-between">
                     <p>Année : {{ $car->year }}</p>

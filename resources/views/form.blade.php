@@ -7,6 +7,14 @@
     <div class="container d-flex justify-content-center">
         <div class="col-8">
 
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="text-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
             <form class="mt-5" action="{{ route('store') }}" method="post" enctype="multipart/form-data">
 
                 @csrf
@@ -37,11 +45,11 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="file" accept="image/png, image/jpg" class="form-control" name="picture">
+                    <input type="file" accept="image/jpg, image/png" class="form-control" name="picture">
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Prix" name="price">
+                    <input type="number" class="form-control" placeholder="Prix" name="price">
                 </div>
 
                 <button class="btn btn-dark" type="submit">Créer</button>
