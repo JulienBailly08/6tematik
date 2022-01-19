@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class BackController extends Controller
 {
     public function show(){
-        return view('backOffice');
+        $cars = Cars::all();
+        return view('backOffice',[
+            'cars'=> $cars
+        ]);
     }
 
     public function create(){
