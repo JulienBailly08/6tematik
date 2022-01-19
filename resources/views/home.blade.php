@@ -8,16 +8,19 @@
             @if ($cars->count() > 0)
                 @foreach ($cars as $car)
                     <div class="col">
-                        <div class="card shadow-sm">
-                            <img class="img-fluid" src="{{ Storage::url($car->picture) }}" alt="une image de véhicule">
-                            <div class="cardbody">
-                                <p class="card-text">
-                                    {{ $car->brand }}<br>
-                                    {{ $car->model }}
-                                </p>
-                                <a href="{{ route('detail', ['id' => $car->id]) }}">Plus d'infos</a>
+                        <a class="text-decoration-none" href="{{ route('detail', ['id' => $car->id]) }}">
+                            <div class="card shadow-sm">
+                                <img class="img-fluid" src="{{ Storage::url($car->picture) }}"
+                                    alt="une image de véhicule">
+                                <div class="cardbody">
+                                    <p class="ms-1 my-3 card-text text-dark">
+                                        {{ $car->brand }}<br>
+                                        {{ $car->model }}
+                                    </p>
+
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             @else
