@@ -9,7 +9,7 @@
                 @foreach ($cars as $car)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img class="img-fluid" src="{{ $car->picture }}" alt="une image de véhicule">
+                            <img class="img-fluid" src="{{ Storage::url($car->picture) }}" alt="une image de véhicule">
                             <div class="cardbody">
                                 <p class="card-text">
                                     {{ $car->brand }}<br>

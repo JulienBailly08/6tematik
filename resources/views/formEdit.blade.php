@@ -7,7 +7,7 @@
     <div class="container d-flex justify-content-center">
         <div class="col-8">
 
-            <form class="mt-5" action="{{ route('update', ['id' => $car->id]) }}" method="post">
+            <form class="mt-5" action="{{ route('update', ['id' => $car->id]) }}" method="post" enctype="multipart/form-data">
 
                 @csrf
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cars;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BackController extends Controller
 {
@@ -21,6 +22,8 @@ class BackController extends Controller
 
     public function store(Request $request){
         
+        $name = Storage::disk('public')->put('img',$request->file('picture'));
+              
         Cars::create([
             'brand'=>$request->brand,
             'model'=>$request->model,
@@ -28,7 +31,7 @@ class BackController extends Controller
             'year'=>$request->year,
             'pack'=>$request->pack,
             'description'=>$request->description,
-            'picture'=>$request->picture,
+            'picture'=>$name,
             'price'=>$request->price
         ]);
 

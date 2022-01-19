@@ -7,7 +7,7 @@
     <div class="container d-flex justify-content-center">
         <div class="col-8">
 
-            <form class="mt-5" action="{{ route('store') }}" method="post">
+            <form class="mt-5" action="{{ route('store') }}" method="post" enctype="multipart/form-data">
 
                 @csrf
 
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Image" name="picture">
+                    <input type="file" accept="image/png, image/jpg" class="form-control" name="picture">
                 </div>
 
                 <div class="input-group mb-3">
@@ -47,7 +47,7 @@
                 <button class="btn btn-dark" type="submit">Créer</button>
 
             </form>
-            
+
         </div>
     </div>
 
