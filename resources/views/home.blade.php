@@ -17,7 +17,6 @@
                                         {{ $car->brand }}<br>
                                         {{ $car->model }}
                                     </p>
-
                                 </div>
                             </div>
                         </a>
