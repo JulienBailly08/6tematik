@@ -37,8 +37,4 @@ Route::get('/admin/edit/{id}', [BackController::class, 'edit'])->name('edit');
 Route::post('/admin/update', [BackController::class, 'update'])->name('update');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
