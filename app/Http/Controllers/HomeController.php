@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $cars = Cars::all();
+        $cars = Cars::paginate(9);
 
         return view('home', [
             'cars' => $cars
