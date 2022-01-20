@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cars;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class BackController extends Controller
@@ -12,10 +14,15 @@ class BackController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+ 
     }
 
     public function show()
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        };  
+
         $cars = Cars::all();
         return view('backOffice', [
             'cars' => $cars
@@ -24,12 +31,19 @@ class BackController extends Controller
 
     public function create()
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        }; 
+
         return view('form');
     }
 
 
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        }; 
 
         $request->validate([
             'brand' => 'required | max:255',
@@ -62,6 +76,10 @@ class BackController extends Controller
 
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        }; 
+
         $car = Cars::find($id);
 
         return view('formEdit', [
@@ -71,6 +89,10 @@ class BackController extends Controller
 
     public function update(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        }; 
+        
         $request->validate([
             'brand' => 'required | max:255',
             'model' => 'required | max:255',
@@ -117,6 +139,10 @@ class BackController extends Controller
 
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort('403');
+        };     
+        
         $car = Cars::find($id);
         $car->delete();
         return redirect()->route('back');

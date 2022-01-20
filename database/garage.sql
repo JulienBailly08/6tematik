@@ -64,7 +64,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2,	'2014_10_12_100000_create_password_resets_table',	1),
 (3,	'2019_08_19_000000_create_failed_jobs_table',	1),
 (4,	'2019_12_14_000001_create_personal_access_tokens_table',	1),
-(5,	'2022_01_18_202512_create_cars_table',	1);
+(5,	'2022_01_18_202512_create_cars_table',	1),
+(6,	'2022_01_19_000000_create_users_table',	2);
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -102,13 +103,14 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `role` enum('user','admin') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1,	'Julien',	'julienbailly08@gmail.com',	NULL,	'$2y$10$t1Km9Ffeb4rhbC3hJbbzfeIV8xWxxvoVK9Vl5TOxhLw.INMfIzB.K',	'FzEo9hcQE2jczTS7t48T2Lg8fnns58w5v7XtNTekrOo7HrFkPHI3l50zGPHM',	'2022-01-19 12:19:44',	'2022-01-19 12:19:44'),
-(2,	'Samuel',	'samuel@6tematik.fr',	NULL,	'$2y$10$z7lESZ8EzXGhWgys2Kro7.kWvKUNPjJNS/2vgzRhmXZoymsxln31m',	NULL,	'2022-01-19 13:49:24',	'2022-01-19 13:49:24'),
-(3,	'Julien',	'julien@6tematik.fr',	NULL,	'$2y$10$AkjxVKL.I4JL..2M0Sd7HOekHd2rmWSv1fkcxrt9EAEvKh2nn7PQa',	NULL,	'2022-01-19 13:50:43',	'2022-01-19 13:50:43');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
+(1,	'Julien',	'julienbailly08@gmail.com',	NULL,	'$2y$10$t1Km9Ffeb4rhbC3hJbbzfeIV8xWxxvoVK9Vl5TOxhLw.INMfIzB.K',	'pqO3FjVlHUgs3C7BbnlnNGlM5lOnyWkA1FOj2cMSfXHYdnj7I1o82e7Jnh27',	'2022-01-19 12:19:44',	'2022-01-19 12:19:44',	'user'),
+(2,	'Samuel',	'samuel@6tematik.fr',	NULL,	'$2y$10$z7lESZ8EzXGhWgys2Kro7.kWvKUNPjJNS/2vgzRhmXZoymsxln31m',	NULL,	'2022-01-19 13:49:24',	'2022-01-19 13:49:24',	'admin'),
+(3,	'Julien',	'julien@6tematik.fr',	NULL,	'$2y$10$AkjxVKL.I4JL..2M0Sd7HOekHd2rmWSv1fkcxrt9EAEvKh2nn7PQa',	NULL,	'2022-01-19 13:50:43',	'2022-01-19 13:50:43',	'admin');
 
--- 2022-01-19 16:30:38
+-- 2022-01-20 08:11:46
